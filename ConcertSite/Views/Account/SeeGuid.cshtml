@@ -1,0 +1,29 @@
+﻿@model ConcertSite.Models.StatementOnBuy
+@{
+    ViewBag.Title = "SeeGuid";
+}
+
+
+<div class="main">
+    <h2>SeeGuid</h2>
+    <form id="contact-form" enctype="multipart/form-data" method="post">
+        @Html.ActionLink("Back", "Company", "Account")<br />
+        <fieldset>
+            <ol>
+                <li>
+                    <span class="name-input">Login:</span>
+                    @Html.TextBoxFor(m => m.User.login)
+                    <br/>
+                    <span class="name-input">Guid:</span>
+                    @Html.TextBoxFor(m => m.Bilet.guidBilet)
+                </li>
+                @Html.HiddenFor(m => m.id)
+            </ol>
+
+        </fieldset>
+
+    </form>
+
+
+
+</div>

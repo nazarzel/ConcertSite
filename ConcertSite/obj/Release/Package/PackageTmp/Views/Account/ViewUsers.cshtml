@@ -1,0 +1,55 @@
+﻿@model List<ConcertSite.Models.User>
+@{
+    ViewBag.Title = "ViewUsers";
+}
+
+<link href="~/css/table.css" rel="stylesheet" type="text/css" />
+
+<div class="main">
+    @using (Html.BeginForm(null, null, FormMethod.Get, new { id = "contact-form" }))
+    {
+        <fieldset>
+            <p>@Html.TextBox("s")</p>
+            <p>
+                <input type="submit" value="search" style="width: 40%" />
+            </p>
+        </fieldset>
+
+    }
+    <table class="bordered">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>login</th>
+                <th>password</th>
+                <th>country</th>
+                <th>city</th>
+                <th>phone</th>
+                <th>email</th>
+                <th>roleId</th>
+            </tr>
+        </thead>
+        @foreach (ConcertSite.Models.User item in Model)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.name</td>
+                <td>@item.login</td>
+                <td>@item.pass</td>
+                <td>@item.country</td>
+                <td>@item.city</td>
+                <td>@item.phone</td>
+                <td>@item.email</td>
+                <td>@item.RoleId</td>
+                <td><a href="@Url.Action("EditUser", "Account", new { item.id })">Edit</a> | 
+                    <a href="@Url.Action("DeleteUser", "Account", new { id = item.id })">Del</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+    <footer>
+
+    </footer>
+</div>

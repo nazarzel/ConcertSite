@@ -1,0 +1,41 @@
+﻿@model ConcertSite.Models.Concert
+@{
+    ViewBag.Title = "AddConcert";
+}
+
+
+<div class="main">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "contact-form" }))
+    {
+        <p>Create new concert</p>
+        <fieldset>
+            <ol>
+
+                <li>
+                    <span class="name-input">singer</span>
+                    @Html.TextBoxFor(m => m.singer)
+                </li>
+                <li>
+                    <span class="name-input">country</span>
+                    @Html.TextBoxFor(m => m.country)
+                </li>
+                <li>
+                    <span class="name-input">city</span>
+                    @Html.TextBoxFor(m => m.city)
+                </li>
+                <li>
+                    <span class="name-input">place</span>
+                    @Html.TextBoxFor(m => m.place)
+                </li>
+                <li>
+                    <span class="name-input">time</span>
+                    @Html.EditorFor(m => m.time)
+                </li>
+
+            </ol>
+            <input id="ButtonAddConcert" type="submit" value="Add" />
+
+        </fieldset>
+
+    }
+</div>

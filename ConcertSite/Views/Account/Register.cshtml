@@ -1,0 +1,144 @@
+﻿@model ConcertSite.Models.RegisterModel
+@{
+    ViewBag.Title = "Registration";
+}
+
+<div class="main">
+    <div class="content-padding-2">
+        <div class="container_12">
+            <div class="wrapper">
+                <article class="grid_8">
+                    <div class="padding-grid-1">
+                        <h3>Registration <strong>Form</strong></h3>
+                        @ViewBag.Login
+                        <h5>@Html.ActionLink("Log in", "Login", "Account")</h5>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary()
+                            <form id="contact-form" enctype="multipart/form-data" method="post">
+                                <fieldset>
+                                    
+                                    <ol>
+                                        <li>
+                                            <span class="name-input">@Html.LabelFor(m => m.name)</span>
+                                            @Html.TextBoxFor(m => m.name)
+                                            @Html.ValidationMessageFor(m => m.name)
+                                        </li>
+                                        <li>
+                                            <span class="name-input">@Html.LabelFor(m => m.login)</span>
+                                            @Html.TextBoxFor(m => m.login)
+                                            @Html.ValidationMessageFor(m => m.name)
+                                        </li>
+                                        <li>
+                                            <span class="name-input">@Html.LabelFor(m => m.pass)</span>
+                                            @Html.PasswordFor(m => m.pass)
+                                            @Html.ValidationMessageFor(m => m.name)
+                                        </li>
+                                        <li>
+                                            <span class="name-input">@Html.LabelFor(m => m.country)</span>
+                                            @Html.TextBoxFor(m => m.country)
+                                            @Html.ValidationMessageFor(m => m.name)
+                                        </li>
+                                        <li>
+                                            <span class="name-input">@Html.LabelFor(m => m.city)</span>
+                                            @Html.TextBoxFor(m => m.city)
+                                            @Html.ValidationMessageFor(m => m.name)
+                                        </li>
+                                        <li>
+                                            <span class="name-input">@Html.LabelFor(m => m.phone)</span>
+                                            @Html.TextBoxFor(m => m.phone)
+                                            @Html.ValidationMessageFor(m => m.name)
+                                        </li>
+                                        <li>
+                                            <span class="name-input">@Html.LabelFor(m => m.email)</span>
+                                            @Html.TextBoxFor(m => m.email)
+                                            @Html.ValidationMessageFor(m => m.name)
+                                        </li>
+
+                                    </ol>
+                                    <input id="ButtonReg" type="submit" value="Register" />
+                                    <p>*Phone in format "0960000000"</p>
+                                </fieldset>
+                            </form>
+                        }
+
+
+
+                        @*<form id="contact-form" enctype="multipart/form-data" method="post">
+                            <fieldset>
+                                <label>
+                                    <span class="name-input">Name:</span>
+                                    <input name="name" value="" onblur="if(this.value=='') this.value=''" onfocus="if(this.value =='' ) this.value=''" />
+                                </label>
+                                <label>
+                                    <span class="name-input">Email:</span>
+                                    <input name="name1" value="" onblur="if(this.value=='') this.value=''" onfocus="if(this.value =='' ) this.value=''" />
+                                </label>
+                                <label>
+                                    <span class="name-input">Message:</span>
+                                    <textarea onblur="if(this.value=='') this.value=''" onfocus="if(this.value =='' ) this.value=''"></textarea>
+                                </label>
+                            </fieldset>
+                            <div class="link-form">
+                                <a class="link link-margin" href="#" onclick="document.getElementById('contact-form').reset()">Clear</a>
+                                <a class="link" href="#" onclick="document.getElementById('contact-form').submit()">Send</a>
+                            </div>
+                            <div class="clear"></div>
+                        </form>*@
+                    </div>
+                </article>
+                @*<article class="grid_4 alpha">
+                    <div class="padding-grid-3">
+                        <h3>Contact <strong>Info</strong></h3>
+                        <div class="wrapper p2">
+                            <figure class="style-img-2 fleft">
+                                <iframe width="252" height="195" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Brooklyn,+New+York,+NY,+United+States&amp;aq=0&amp;sll=37.0625,-95.677068&amp;sspn=61.282355,146.513672&amp;ie=UTF8&amp;hq=&amp;hnear=Brooklyn,+Kings,+New+York&amp;ll=40.649974,-73.950005&amp;spn=0.01628,0.025663&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe>
+                            </figure>
+                        </div>
+                        <dl class="list-4">
+                            <dt>8901 Marmora Road,<br>
+                                Glasgow, D04 89GR.</dt>
+                            <dd>Telephone: +1 959 603 6035</dd>
+                            <dd>E-mail: <a class="link" href="#">mail@demolink.org</a></dd>
+                        </dl>
+                    </div>
+                </article>*@
+            </div>
+        </div>
+    </div>
+</div>
+<div class="block"></div>
+
+@*<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>Создание новой учетной записи.</h2>
+</hgroup>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Форма регистрации</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.ConfirmPassword)
+                @Html.PasswordFor(m => m.ConfirmPassword)
+            </li>
+        </ol>
+        <input type="submit" value="Регистрация" />
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@

@@ -1,0 +1,50 @@
+﻿@model ConcertSite.Models.Bilet
+@{
+    ViewBag.Title = "EditBilet";
+}
+
+
+<div class="main">
+    <h2>EditBilet</h2>
+    <form id="contact-form" enctype="multipart/form-data" method="post">
+        <fieldset>
+            <ol>
+                <li>
+                    <span class="name-input">price:</span>
+                    @Html.TextBoxFor(m => m.price)
+                </li>
+                <li>
+                    <span class="name-input">isFree:</span>
+                    @Html.CheckBoxFor(m => m.isFree)
+                </li>
+                <li>
+                    <span class="name-input">sektor:</span>
+                    @Html.TextBoxFor(m => m.sektor)
+                </li>
+                <li>
+                    <span class="name-input">row:</span>
+                    @Html.TextBoxFor(m => m.row)
+                </li>
+                <li>
+                    <span class="name-input">place:</span>
+                    @Html.TextBoxFor(m => m.place)
+                </li>
+                <li>
+                    <span class="name-input">ConcertId:</span>
+                    @Html.TextBoxFor(m => m.ConcertId)
+                </li>
+                @Html.HiddenFor(m => m.id)
+                <li>
+                    <input id="ButtonSave" type="submit" value="Save" style="width: 63%" />
+                </li>
+
+
+            </ol>
+
+        </fieldset>
+
+    </form>
+
+
+
+</div>

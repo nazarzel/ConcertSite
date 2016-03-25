@@ -1,0 +1,66 @@
+﻿@model ConcertSite.Models.ModelViewMessage
+@{
+    ViewBag.Title = "Messages";
+}
+
+<div class="main">
+    <div id="MessageLeft">
+        @ViewBag.Message<br />
+        @if (Model.message != null)
+        {
+            <a href="@Url.Action("Messages", "Account")">Back</a> <br />
+        }
+
+        <ol id="listMessages">
+            @if (Model.message != null)
+            {
+                foreach (var item in Model.myMessage)
+                {
+                <b>From: @item.loginFrom <span>To: @item.loginTo </span>@item.time.Day-@item.time.Month  @item.time.Hour:@item.time.Minute</b> 
+                <li id="itemMess">@item.Text</li>
+                    
+                }
+            }
+            else
+            {
+
+                foreach (var item in Model.UserListMessage)
+                {
+                <li><a href="@Url.Action("Messages", "Account", new { name = item })">@item</a></li>
+                }
+            }
+
+        </ol>
+    </div>
+    <div id="MessageRight" style="float: right; width: 60%">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "contact-form" }))
+        {
+            <fieldset>
+                <ol>
+                    <li>
+                        <span class="name-input">Login:</span>
+                        @if (Model.message != null)
+                        {
+                            
+                            <input id="loginTo" name="loginTo" type="text" value="@Model.message.loginTo">
+                        }
+                        else
+                        {  <input id="loginTo" name="loginTo" type="text" value=""> }
+                    </li>
+                    <li>
+                        <span class="name-input">Text:</span>
+                        <textarea cols="20" rows="2" id="Text" name="Text"></textarea>
+                    </li>
+                    <li>
+                        <input id="ButtonSave" type="submit" value="Send" style="width: 63%" />
+                    </li>
+
+                </ol>
+
+            </fieldset>
+
+        }
+    </div>
+
+
+</div>

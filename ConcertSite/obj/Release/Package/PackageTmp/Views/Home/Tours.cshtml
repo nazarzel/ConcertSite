@@ -1,0 +1,69 @@
+﻿@model List<ConcertSite.Models.Concert>
+@{
+    ViewBag.Title = "Tours";
+}
+
+<div class="main">
+    <div class="content-padding-2">
+        <div class="container_12">
+            <div class="wrapper">
+                <div class="grid_8">
+                    @using (Html.BeginForm(null, null, FormMethod.Get, new { id = "contact-form" }))
+                    {
+                        <fieldset>
+                            <p>@Html.TextBox("s")</p>
+                            <p>
+                                <input type="submit" value="search" style="width: 81.5%" />
+                            </p>
+                        </fieldset>
+
+                    }
+                    @if (User.IsInRole("admin"))
+                    {
+                        @Html.ActionLink("Add", "AddConcert", "Account")
+                    }
+                    <div class="padding-grid-1">
+                        <h3>Tour <strong>Dates</strong></h3>
+                    </div>
+                    <div class="wrapper">
+                        <article class="grid_4 alpha">
+                            <div class="padding-grid-1">
+                                @foreach (ConcertSite.Models.Concert item in Model)
+                                {
+
+                                    <div class="wrapper img-indent-bot2">
+                                        <time class="time time-stule-2" datetime="@item.time.ToShortDateString()"><strong class="text-3">@item.time.Day</strong><strong class="text-4">@item.time.Month</strong></time>
+                                        <di class="extra-wrap">
+                                            <h4 class="indent-top"><a href="@Url.Action("Bilets", "Home", new { item.id })">@item.city <span id="spanFree">Free: @item.bilets.Where(u => u.isFree == true).Count()</span>
+                                                @if (User.IsInRole("admin"))
+                                                {
+                                                    <a href="@Url.Action("EditConcert", "Account", new { id = item.id })"><span style="font-size:small;">Edit</a>
+                                                    <a href="@Url.Action("DeleteConcert", "Account", new { id = item.id })"><span style="font-size:small;">Del</span></a>
+                                                }
+                                            </a></h4>
+                                            @item.singer
+                                        
+                                    </div>
+                                }
+
+                            </div>
+                        </article>
+                        <article class="grid_4 omega">
+                            <div class="padding-grid-4">
+                                @foreach (ConcertSite.Models.Concert item in Model)
+                                {
+                                    <div class="margin-bot1">
+                                        <span class="text-width">Country:</span> <span class="color-1 inline">@item.country</span><br />
+                                        <span class="text-width">Place:</span>  <span class="color-1 inline">@item.place</span>
+                                    </div>
+                                }
+
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="block"></div>

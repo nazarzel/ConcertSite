@@ -1,0 +1,30 @@
+﻿@model ConcertSite.Models.StatementOnBuy
+@{
+    ViewBag.Title = "EditStatement";
+}
+
+
+<div class="main">
+    <h2>EditStatement</h2>
+    <form id="contact-form" enctype="multipart/form-data" method="post">
+        <fieldset>
+            <ol>
+                <li>
+                    <span class="name-input">isPaid:</span>
+                    @Html.CheckBoxFor(m => m.isPaid)
+                </li>
+                @Html.HiddenFor(m => m.id)
+                <li>
+                    <input id="ButtonSave" type="submit" value="Save" style="width: 63%" />
+                </li>
+
+
+            </ol>
+
+        </fieldset>
+
+    </form>
+
+
+
+</div>

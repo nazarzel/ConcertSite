@@ -1,0 +1,32 @@
+﻿@model List<ConcertSite.Models.Bilet>
+@{
+    ViewBag.Title = "Bilets";
+}
+
+
+<div class="main">
+    <form id="contact-form" enctype="multipart/form-data" method="post">
+        <fieldset>
+            <h2>Dear, @User.Identity.Name, please, transfer  money to one of the following 
+    accounts and write message to the administrator with the time of payment or
+    number of card, or webmoney from which operation was made(you have 3 days),
+                unical identity will send on your email
+            </h2>
+            <ol>
+                <li>
+                    <img src="~/images/privatbank.png" alt="" width="90" height="50" />
+                    <h2>5457 0822 3661 6202</h2>
+                </li>
+                <li>
+                    <img src="~/images/webmoney.png" alt="" width="90" height="50" />
+                    <h2>123456789</h2>
+                </li>
+            </ol>
+
+        </fieldset>
+
+    </form>
+
+
+
+</div>

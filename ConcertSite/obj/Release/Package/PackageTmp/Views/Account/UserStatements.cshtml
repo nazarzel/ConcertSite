@@ -1,0 +1,41 @@
+﻿@model List<ConcertSite.Models.StatementOnBuy>
+@{
+    ViewBag.Title = "UserStatements";
+}
+<link href="~/css/table.css" rel="stylesheet" type="text/css" />
+<div class="main">
+    @Html.ActionLink("Back", "Cabinet", "Account")<br />
+    <table class="bordered">
+        <thead>
+            <tr>
+                <th>isPaid</th>
+                <th>price</th>
+                <th>place</th>
+                <th>row</th>
+                <th>sector</th>
+                <th>singer</th>
+                <th>time</th>
+                <th>city</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (ConcertSite.Models.StatementOnBuy item in Model)
+            {
+                <tr>
+                    <td>@item.isPaid</td>
+                    <td>@item.Bilet.price</td>
+                    <td>@item.Bilet.place</td>
+                    <td>@item.Bilet.row</td>
+                    <td>@item.Bilet.sektor</td>
+                    <td>@item.Bilet.Concert.singer</td>
+                    <td>@item.Bilet.Concert.time</td>
+                    <td>@item.Bilet.Concert.city</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <footer>
+       
+    </footer>
+</div>
+

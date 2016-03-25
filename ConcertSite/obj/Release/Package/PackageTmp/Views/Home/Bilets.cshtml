@@ -1,0 +1,46 @@
+﻿@model List<ConcertSite.Models.Bilet>
+@{
+    ViewBag.Title = "Bilets";
+}
+<link href="~/css/table.css" rel="stylesheet" type="text/css" />
+
+<div class="main">
+    @Html.ActionLink("Back", "Tours", "Home")<br />
+    @if (User.IsInRole("admin"))
+    {
+        @Html.ActionLink("Add", "AddBilet", "Account")
+    }
+    <table class="bordered">
+        <thead>
+            <tr>
+                <th>price</th>
+                <th>sector</th>
+                <th>row</th>
+                <th>place</th>
+                <th>buy</th>
+            </tr>
+        </thead>
+        @foreach (ConcertSite.Models.Bilet item in Model)
+        {
+            if (item.isFree == true)
+            {
+            <tr>
+                <td>@item.price $</td>
+                <td>@item.sektor</td>
+                <td>@item.row</td>
+                <td>@item.place</td>
+                <td><a href="@Url.Action("Buy", "Account", new { item.id })">Buy</a>
+                    @if (User.IsInRole("admin"))
+                    {
+                        @:| <a href="@Url.Action("EditBilet", "Account", new { id = item.id })">Edit</a>
+                    }
+                </td>
+            </tr>
+            }
+        }
+
+    </table>
+    <footer>
+
+    </footer>
+</div>

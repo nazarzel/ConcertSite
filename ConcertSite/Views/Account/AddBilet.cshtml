@@ -1,0 +1,39 @@
+﻿@model ConcertSite.Models.Bilet
+@{
+    ViewBag.Title = "AddBilet";
+}
+<div class="main">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "contact-form" }))
+    {
+        <p>Create New Ticket</p>
+        <fieldset>
+            <ol>
+
+                <li>
+                    <span class="name-input">price</span>
+                    @Html.TextBoxFor(m => m.price)
+                </li>
+                <li>
+                    <span class="name-input">sektor</span>
+                    @Html.TextBoxFor(m => m.sektor)
+                </li>
+                <li>
+                    <span class="name-input">row</span>
+                    @Html.TextBoxFor(m => m.row)
+                </li>
+                <li>
+                    <span class="name-input">place</span>
+                    @Html.TextBoxFor(m => m.place)
+                </li>
+                <li>
+                    <span class="name-input">ConcertId</span>
+                    @Html.DropDownListFor(m => m.ConcertId, (SelectList)ViewBag.ListConcerts)
+                </li>
+
+            </ol>
+            <input id="ButtonAddBilet" type="submit" value="Add" />
+
+        </fieldset>
+
+    }
+</div>

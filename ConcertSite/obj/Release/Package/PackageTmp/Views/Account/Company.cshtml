@@ -1,0 +1,72 @@
+﻿@model List<ConcertSite.Models.StatementOnBuy>
+@{
+    ViewBag.Title = "Company";
+}
+
+<link href="~/css/table.css" rel="stylesheet" type="text/css" />
+<div class="main">
+    @Html.ActionLink("Back", "Tours", "Home")<br />
+    @if (User.IsInRole("admin"))
+    {
+        @Html.ActionLink("Edit", "EditStatement", "Account")
+    }
+    @using (Html.BeginForm(null, null, FormMethod.Get, new { id = "contact-form" }))
+    {
+        <fieldset>
+            <p>@Html.TextBox("s")</p>
+            <p>
+                <input type="submit" value="search" style="width: 40%" />
+            </p>
+        </fieldset>
+
+    }
+    <table class="bordered">
+        <thead>
+            <tr>
+                <th>login</th>
+                <th>singer</th>
+                <th>country(concert)</th>
+                <th>city(concert)</th>
+                <th>country(user)</th>
+                <th>city(user)</th>
+                <th>write</th>
+                @if (User.IsInRole("admin"))
+                {
+                    <th>status</th>
+                }
+            </tr>
+        </thead>
+        @foreach (ConcertSite.Models.StatementOnBuy item in Model)
+        {
+            <tr>
+                <td>@item.User.login</td>
+                <td>@item.Bilet.Concert.singer</td>
+                <td>@item.Bilet.Concert.country</td>
+                <td>@item.Bilet.Concert.city</td>
+                <td>@item.User.country</td>
+                <td>@item.User.city</td>
+                <td><a href="@Url.Action("Messages", "Account", new { name = item.User.login })">Write</a>
+                    @if (User.IsInRole("admin"))
+                    {
+                    
+                        @:| <a href="@Url.Action("EditStatement", "Account", new { id = item.id })">Edit</a>
+                }
+                </td>
+                @if (User.IsInRole("admin"))
+                {
+                    if (@item.isPaid == true)
+                    {
+                       <td> <a href="@Url.Action("SeeGuid", "Account", new { id = item.id })">@item.isPaid</a></td>
+                    }
+                    else
+                    {
+                        <td>@item.isPaid </td>
+                    }
+                }
+            </tr>
+        }
+
+    </table>
+    <footer>
+    </footer>
+</div>

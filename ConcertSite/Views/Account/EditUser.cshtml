@@ -1,0 +1,54 @@
+﻿@model ConcertSite.Models.User
+@{
+    ViewBag.Title = "EditUser";
+}
+
+<div class="main">
+    <form id="contact-form" enctype="multipart/form-data" method="post">
+        <fieldset>
+            <ol>
+                <li>
+                    <span class="name-input">Name:</span>
+                    @Html.TextBoxFor(m => m.name)
+                </li>
+                <li>
+                    <span class="name-input">Login:</span>
+                    @Html.TextBoxFor(m => m.login)
+                </li>
+                <li>
+                    <span class="name-input">Password:</span>
+                    @Html.TextBoxFor(m => m.pass)
+                </li>
+                <li>
+                    <span class="name-input">Country:</span>
+                    @Html.TextBoxFor(m => m.country)
+                </li>
+                <li>
+                    <span class="name-input">City:</span>
+                    @Html.TextBoxFor(m => m.city)
+                </li>
+                <li>
+                    <span class="name-input">Phone:</span>
+                    @Html.TextBoxFor(m => m.phone)
+                </li>
+                <li>
+                    <span class="name-input">Email:</span>
+                    @Html.TextBoxFor(m => m.email)
+                </li>
+                <li>
+                    <span class="name-input">RoleId:</span>
+                    @Html.TextBoxFor(m => m.RoleId)
+                </li>
+                <li>
+                    <input id="ButtonSave" type="submit" value="Save" style="width: 63%" />
+                </li>
+
+            </ol>
+
+        </fieldset>
+
+    </form>
+
+
+
+</div>

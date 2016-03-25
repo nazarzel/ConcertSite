@@ -1,0 +1,158 @@
+﻿@model List<ConcertSite.Models.Concert>
+@{
+    ViewBag.Title = "Home Page";
+}
+<script type="text/javascript">
+    $(window).load(function () {
+        $('.slider')._TMS({
+            duration: 800,
+            easing: 'easeOutQuad',
+            preset: 'diagonalFade',
+            pagination: false,
+            slideshow: 6000,
+            banners: false,
+            waitBannerAnimation: false,
+            pauseOnHover: true
+        });
+        $("a[data-gal^='prettyVideo']").prettyPhoto({ animation_speed: 'normal', theme: 'facebook', slideshow: false, autoplay_slideshow: false });
+    });
+</script>
+<script src="~/js/jquery.easing.1.3.js" type="text/javascript"></script>
+<script src="~/js/hover-image.js" type="text/javascript"></script>
+<script src="~/js/jquery.prettyPhoto.js" type="text/javascript"></script>
+<script src="~/js/jquery.easing.1.3.js" type="text/javascript"></script>
+<script type="text/javascript" src="~/js/tms-0.3.js"></script>
+<script type="text/javascript" src="~/js/tms_presets.js"></script>
+
+@section slider {
+    <div class="slider-wrapper">
+        <div class="slider">
+            <ul class="items">
+                <li>
+                    <img src="images/slider-img1.jpg" alt="" /></li>
+                <li>
+                    <img src="images/slider-img2.jpg" alt="" />
+                </li>
+                <li>
+                    <img src="images/slider-img3.jpg" alt="" />
+                </li>
+            </ul>
+        </div>
+    </div>
+}
+
+
+
+<div class="main">
+    <div class="bg-2">
+        <div class="content-padding-1">
+            <div class="container_12">
+                <div class="wrapper">
+                    <article class="grid_4">
+                        <div class="padding-grid-1">
+                            <h3 class="letter">Latest <strong>News</strong></h3>
+                            <div class="wrapper img-indent-bot1">
+                                <time class="time time-stule-1" datetime="2011-11-09"><strong class="text-1">09</strong><strong class="text-2">mar</strong></time>
+                                <div class="extra-wrap">
+                                    <div class="indent-top">
+                                        Rock Band is one of free websites templates created by <a rel="nofollow" target="_blank" class="link" href="http://vk.com/nazarzel">Nazar Svyryd</a>.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wrapper img-indent-bot1">
+                                <time class="time time-stule-1" datetime="2011-11-07"><strong class="text-1">07</strong><strong class="text-2">mar</strong></time>
+                                <div class="extra-wrap">
+                                    <div class="indent-top">
+                                        On this site you can find and buy different tickets on concert.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wrapper">
+                                <time class="time time-stule-1" datetime="2011-11-02"><strong class="text-1">02</strong><strong class="text-2">mar</strong></time>
+                                <div class="extra-wrap">
+                                    <div class="indent-top">
+                                        Please, register to use a full-version of website
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="grid_4 alpha">
+                        <div class="padding-grid-1">
+                            <h3>Tour <strong>Dates</strong></h3>
+                            @foreach (ConcertSite.Models.Concert item in Model)
+                            {
+                                <div class="wrapper img-indent-bot2">
+                                    <time class="time time-stule-2" datetime="@item.time.ToShortDateString()"><strong class="text-3">@item.time.Day</strong><strong class="text-4">@item.time.Month</strong></time>
+                                    <div class="extra-wrap">
+                                        <h4 class="indent-top"><a href="@Url.Action("Bilets", "Home", new { item.id })">@item.city</a></h4>
+                                        @item.singer
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </article>
+                    <article class="grid_4 alpha">
+                        <div class="padding-grid-2">
+                            <h3 class="letter">In Stores <strong>Now!</strong></h3>
+                            <div class="wrapper">
+                                <figure class="style-img fleft">
+                                    <a target="_blank" href="http://rockway.biz/">
+                                        <img src="images/page1-img1.jpg" alt=""></a>
+                                </figure>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-padding-2">
+        <div class="container_12">
+            <div class="wrapper">
+                <article class="grid_4">
+                    <div class="padding-grid-1">
+                        <h3>Past <strong>Events</strong></h3>
+                        <div class="wrapper img-indent-bot1">
+                            <time class="time time-stule-3" datetime="2011-11-09"><strong class="text-5">09</strong><strong class="text-6">mar</strong></time>
+                            <div class="extra-wrap">
+                                <div class="indent-top">
+                                    Sting had given his consert in Chikago.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wrapper">
+                            <time class="time time-stule-3" datetime="2011-11-03"><strong class="text-5">15</strong><strong class="text-6">mar</strong></time>
+                            <div class="extra-wrap">
+                                <div class="indent-top">
+                                    Rammstein had given their concert in Berlin.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="grid_4 alpha">
+                    <div class="padding-grid-2">
+                        <h3 class="letter">Latest <strong>Foto</strong></h3>
+
+                        <div class="wrapper">
+                            <figure class="style-img-2 fleft">
+                                <a target="_blank" class="lightbox-image" href="http://www.rammstein.de/en">
+                                    <img src="images/page1-img2.jpg" alt=""></a>
+                            </figure>
+                        </div>
+                    </div>
+                </article>
+                <article class="grid_4 alpha">
+                    <div class="padding-grid-2">
+                        <h3 class="letter prev-indent-bot1">Shortly <strong>About</strong></h3>
+                        <h6>Web-site of new generation</h6>
+                        You can find a company to concert, buy tickets, see latest news etc. Register faster to see all:)
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="block"></div>

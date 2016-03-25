@@ -1,0 +1,44 @@
+﻿@model ConcertSite.Models.LoginModel
+@{
+    ViewBag.Title = "Log In";
+}
+
+<div class="main">
+    <div class="content-padding-2">
+        <div class="container_12">
+            <div class="wrapper">
+                <article class="grid_8">
+                    <div class="padding-grid-1">
+                        <h3>Log In <strong>Form</strong></h3>
+                        <h5>@Html.ActionLink("Registration", "Register", "Account")</h5>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary()
+                            <form id="contact-form" enctype="multipart/form-data" method="post">
+                                <fieldset>
+                                    <ol>
+
+                                        <li>
+                                            <span class="name-input">@Html.LabelFor(m => m.UserName)</span>
+                                            @Html.TextBoxFor(m => m.UserName)
+                                        </li>
+                                        <li>
+                                            <span class="name-input">@Html.LabelFor(m => m.Password)</span>
+                                            @Html.PasswordFor(m => m.Password)
+                                        </li>
+                                        <li>
+                                            @Html.CheckBoxFor(m => m.RememberMe)
+                                            @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+                                        </li>
+                                    </ol>
+                                    <input id="ButtonLogIn" type="submit" value="Log In" />
+                                </fieldset>
+                            </form>
+                        }
+                    </div>
+            </div>
+        </div>
+    </div>
+    </article>
+</div>
